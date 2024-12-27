@@ -8,6 +8,8 @@ let data = {
     name: 'ethem'
 }
 
+//MIDDLEWARE
+
 // HTTP routes / verbs (method - endpoint):
 // The given verb indicates the nature of the request being made and the route is
 //  the subdirectory / endpoint intended.
@@ -51,12 +53,25 @@ app.get('/api/data', (req, res) => {
 app.get('/html', (req, res) => {
     res.send(
         `
-            <body>
+            <body 
+                style="background-color:gray;
+                    color:black"
+            >
                 <h1>Template literal test Via get request</h1>
                 <p>The name in data is: ${data.name}</p>
             </body>
         `
     )
+})
+
+app.post('/html', (req, res) => {
+
+    //Someone wants to create a user - e.g when you click sign up button.
+    //After the user clicks the sign up button once they hav filled in their credentials, 
+    //  their browser is wired up to send out a network request to the server to handle that action.
+    const newData = req.body
+    console.log(newData)
+    res.sendStatus(201)
 })
 
 app.listen(PORT, () => console.log('wired in ;)' + `PORT: ${PORT}`))
