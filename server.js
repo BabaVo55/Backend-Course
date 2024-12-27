@@ -20,7 +20,9 @@ app.get('/dashboard', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
-    res.send('<h1>Heres  youre new page cooking</h1>')
+    res.send(
+        '<h1>Heres your new page cooking</h1><input placeholder=hello value=delete /><button id="button">Click me bruh</button> <script>const button = document.getElementById("button"); button.addEventListener("click", () => alert(`hey there you have pressed my button!!!!!!!!!!!!!!!`))</script>'
+    )
 })
 
 
