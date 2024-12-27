@@ -8,9 +8,16 @@ const PORT = 8003
 // The given verb indicates the nature of the request being made and the route is
 //  the subdirectory / endpoint intended.
 app.get('/', (req, res) => {
-    console.log('welcome to a very empty home page :D', req.method)
-    res.send('A very empty Homepage')
+    console.log('Network-Side: Welcome to a very empty home page :D', req.method)
+    
+    // Cannot have multiple sends
+    // res.send('A very empty Homepage')
     res.sendStatus(201)
+})
+
+app.get('/dashboard', (req, res) => {
+    console.log('Dashboard page at your service')
+    res.send('Hey there')
 })
 
 
