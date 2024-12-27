@@ -1,0 +1,11 @@
+### TEST Get / Website
+GET http://localhost:8003
+
+### Test Get / Homepage
+GET http://localhost:8003/home
+
+### Test DATA Endpoint
+GET http://localhost:8003/api/data
+
+### Test HTML + DATA in Template literal format:
+GET http://localhost:8003/html
