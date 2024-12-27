@@ -9,6 +9,7 @@ let data = {
 }
 
 //MIDDLEWARE
+app.use(express.json())
 
 // HTTP routes / verbs (method - endpoint):
 // The given verb indicates the nature of the request being made and the route is

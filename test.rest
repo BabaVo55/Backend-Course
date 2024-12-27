@@ -12,8 +12,8 @@ GET http://localhost:8003/html
 
 ### Data endpoint of adding user - POST request:
 POST http://localhost:8003/html
-
 Content-Type: application/json
+
 {
     "name": "Baba"
 }
