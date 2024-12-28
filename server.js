@@ -4,10 +4,8 @@ const express = require('express');
 const app = express();
 const PORT = 8003
 
-let data = {
-    name: 'ethem'
-}
-
+let data = ['ethem']
+let beta = ['hello']
 //MIDDLEWARE
 app.use(express.json())
 
@@ -59,7 +57,8 @@ app.get('/html', (req, res) => {
                     color:black"
             >
                 <h1>Template literal test Via get request</h1>
-                <p>The name in data is: ${data.name}</p>
+                <p>The name in data is: ${data}</p>
+                <p>The name in beta is: ${beta}</p>
             </body>
         `
     )
@@ -70,9 +69,22 @@ app.post('/html', (req, res) => {
     //Someone wants to create a user - e.g when you click sign up button.
     //After the user clicks the sign up button once they hav filled in their credentials, 
     //  their browser is wired up to send out a network request to the server to handle that action.
-    const newData = req.body
-    console.log(newData)
+    const newData = req.body.name
+    const betaData = req.body.greet
+    data.push(newData)
+    beta.push(betaData)
+    console.log(data)
+    console.log(beta)
     res.sendStatus(201)
+})
+
+app.delete('/html', (req, res) => {
+    let len = data.length;
+    data.pop();
+    beta.pop();
+    console.log('Send a few times and you may be left with nothing')
+    // !data.length === len - 1 && res.send('nothing was delete');
+    res.sendStatus(203)
 })
 
 app.listen(PORT, () => console.log('wired in ;)' + `PORT: ${PORT}`))

@@ -15,5 +15,9 @@ POST http://localhost:8003/html
 Content-Type: application/json
 
 {
-    "name": "Baba"
+    "name": "Rada",
+    "greet": "Jello"
 }
+
+### DATA TO DELETE WILL BE Deleted from this endpoint:
+DELETE http://localhost:8003/html
