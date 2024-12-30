@@ -21,3 +21,11 @@ Content-Type: application/json
 
 ### DATA TO DELETE WILL BE Deleted from this endpoint:
 DELETE http://localhost:8003/html
+
+### Custom PUT endpoint trial:
+PUT http://localhost:8003/html;
+Content-Type: application/json
+
+{
+    "new": "try deleting this"
+}

@@ -16,7 +16,14 @@ app.get('/', (req, res) => {
     console.log('Network-Side: Welcome to a very empty home page :D', req.method)   
     // Cannot have multiple sends
     // res.send('A very empty Homepage')
-    res.sendStatus(201)
+    console.log('This is the Back end')
+    res.send(
+        `
+            <h1>Home PAge</h1>
+            <a href="/html">Click here for login Page</a>
+            <script>console.log('front end?')</script>
+        `
+    )
 })
 
 //TYPE 1:Website endpoints - These endpoints are for sending back HTML and they typically come when a user enters a url in the browser.
@@ -29,6 +36,7 @@ app.get('/dashboard', (req, res) => {
 
 // HTML served up to client:
 app.get('/home', (req, res) => {
+
     res.send(
         '<h1>Heres your new page cooking</h1><input placeholder=hello value=delete /><button id="button">Click me bruh</button> <script>const button = document.getElementById("button"); button.addEventListener("click", () => alert(`hey there you have pressed my button!!!!!!!!!!!!!!!`))</script>'
     )
@@ -54,15 +62,34 @@ app.get('/html', (req, res) => {
         `
             <body 
                 style="background-color:gray;
-                    color:black"
+                    color:black; display:flex; flex-direction: column; align-items:center;  height:full; flex-wrap:wrap"
             >
                 <h1>Template literal test Via get request</h1>
-                <p>The name in data is: ${data}</p>
-                <p>The name in beta is: ${beta}</p>
+                <input style="position:relative; border-radius:20px; padding:2px; border:none; text-indent:10px" id=input value=hello placeholder=try />
+                <button style="position:relative; border-radius: 10px; margin:5px; border:none; font-size:12px" id=button>Press Me</button>
+                <p style="color:lightgray; font-size: .6rem">The name in data is: ${JSON.stringify(data)}</p>
+                <p style="color:darkgray; border:none; position:relative; left:10px">The name in beta is: ${beta}</p>
+                <br />
+                <br />
+                <br />
+                <a href="/">Back to Home NIgggahhh</a>
             </body>
         `
     )
 })
+
+
+
+
+
+
+ 
+
+
+
+
+
+
 
 app.post('/html', (req, res) => {
 
@@ -83,9 +110,15 @@ app.delete('/html', (req, res) => {
     data.pop();
     beta.pop();
     console.log('Send a few times and you may be left with nothing')
-    // !data.length === len - 1 && res.send('nothing was delete');
+    /* !data.length === len - 1 && res.send('nothing was delete'); */
     res.sendStatus(203)
 })
 
-app.listen(PORT, () => console.log('wired in ;)' + `PORT: ${PORT}`))
+app.put('/html', (req, res) => {
+    let target = document.getElementById('button')
+    target.innerHTML = req.body.new
+    res.send(200)
+    console.log('i think it worked')
+})
 
+app.listen(PORT, () => console.log('wired in ;)' + `PORT: ${PORT}`))
