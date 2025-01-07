@@ -7,7 +7,7 @@ import db from '../db.js';
 const router = express.Router();
 
 router.post('/register',(res, req) => {
-
+    res.send('welcome')
 })
 
 router.post('/login', (req, res) => {

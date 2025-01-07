@@ -1,0 +1,11 @@
+### GET /
+GET http://localhost:5000
+
+### GET Registration
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "baba",
+    "password": "babaasffasf"
+}
