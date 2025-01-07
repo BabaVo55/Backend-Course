@@ -84,6 +84,8 @@
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
   },
+  "type":"module",
+
   "scripts": {
     "dev" : "node --watch --env-file=.env --experimental-strip-types --experimental-sqlite ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -91,4 +93,6 @@
   "author": "",
   "license": "ISC",
   "description": "THIS IS A BACKEND APP THAT USES EXPRESS , JsonWebToken & SQLight"
+  
+
 }
