@@ -24,19 +24,20 @@ router.post('/register',(req, res) => {
     // Save new user and hashed password to the db
     try{
         const insertUser = db.prepare(`INSERT INTO users (username, password)
-            VALUES (?, ?`)
+            VALUES (?, ?)`)
         const result = insertUser.run(username, hashedPassword)
 
         // now that we have a user, I want to add their first todo for them
         const defaultTodo = `Hello :) add your first TODO!`;
         const insertTodo = db.prepare(`INSERT INTO todos (user_id, task)
             VALUES (?, ?)`)
+        let token = jwt.sign({id: result.lastInsertRowid}, 
+            process.env.JWT_SECRET, {expiresIn: '24h'})
+            
         insertTodo.run(result.lastInsertRowid, defaultTodo)
         res.json({token})
 
         // create a TOKEN
-        const token = jwt.sign({id: result.lastInsertRowid}, 
-            process.env.JWT_SECRET, {expiresIn: '24h'})
 
     }catch (err){
         console.log(err.message)
@@ -46,8 +47,14 @@ router.post('/register',(req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    const email = req.body.email
-    const password = req.body.password
+    const {username, password} = req.body;
+    
+    try{
+        
+    }catch(err){
+        console.log(err.message);
+        res.sendStatus(503);
+    }
 
 })
 
