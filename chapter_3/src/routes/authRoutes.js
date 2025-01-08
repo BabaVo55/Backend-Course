@@ -46,11 +46,45 @@ router.post('/register',(req, res) => {
 
 })
 
+// router.post('/login', (req, res) => {
+//     const { username, password } = req.body;
+
+//     // Validate input
+//     if (!username || !password) {
+//         return res.status(400).send({ message: "Username and password are required" });
+//     }
+
+//     try {
+//         // Debugging: Log the received username
+//         console.log("Username:", username);
+
+//         const getUser = db.prepare('SELECT * FROM users WHERE username = ?');
+//         const user = getUser.get(username);
+
+//         if (!user) {
+//             return res.status(404).send({ message: "User not found" });
+//         }
+
+//         // Additional logic for password verification, token generation, etc., goes here
+
+//     } catch (err) {
+//         console.log(err.message);
+//         res.sendStatus(503);
+//     }
+// });
+
+
 router.post('/login', (req, res) => {
     const {username, password} = req.body;
     
     try{
+        const getUser = db.prepare('SELECT * FROM users WHERE username = ?')
+        const user = getUser.get(username);
+        if (!user){
+            return res.status(404).send({message: "user not found"})
+        }
         
+
     }catch(err){
         console.log(err.message);
         res.sendStatus(503);
