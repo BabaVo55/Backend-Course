@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 
 import authRoutes from './routes/authRoutes.js'
 import todoRoutes from './routes/todoRoutes.js'
-import authMiddleware from './middleware/authMiddlewar.js';
+import authMiddleware from './middleware/authMiddleware.js';
 
 
 
