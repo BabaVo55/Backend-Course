@@ -44,8 +44,8 @@ app.get('/', (req, res) => {
 
 
 // ROutes
-app.use('/auth', authRoutes)
-app.use('/todos', todoRoutes)
+app.use('/auth', authMiddleware, authRoutes)
+app.use('/todos', authMiddleware, todoRoutes)
 
 
 
